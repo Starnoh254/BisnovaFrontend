@@ -52,7 +52,7 @@ a:focus,
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #2563eb; /* bisnova-blue-600 */
   outline-offset: 2px;
 }
 

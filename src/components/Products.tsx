@@ -68,14 +68,14 @@ const Products = () => {
                 <div className="space-y-2">
                   {category.products.map((product, productIndex) => (
                     <div key={productIndex} className="flex items-center text-sm text-gray-600">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                      <div className="w-2 h-2 bg-bisnova-green-600 rounded-full mr-3"></div>
                       {product}
                     </div>
                   ))}
                 </div>
               </div>
               <div className="bg-gray-50 px-6 py-4">
-                <button className="w-full text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                <button className="w-full text-bisnova-blue-600 font-semibold hover:text-bisnova-blue-800 transition-colors">
                   View Products →
                 </button>
               </div>
@@ -83,7 +83,7 @@ const Products = () => {
           ))}
         </div>
 
-        <div className="mt-16 bg-blue-600 rounded-lg p-8 text-center text-white">
+        <div className="mt-16 bg-bisnova-blue-600 rounded-lg p-8 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">
             Can't Find What You're Looking For?
           </h3>
@@ -93,13 +93,13 @@ const Products = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-bisnova-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-bisnova-green-700 transition-colors shadow-lg"
             >
               Contact Our Team
             </a>
             <a
               href="#"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-bisnova-blue-600 transition-colors"
             >
               Request Catalog
             </a>
