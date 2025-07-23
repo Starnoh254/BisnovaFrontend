@@ -1,0 +1,94 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Lint code
+      run: npm run lint
+    
+    - name: Build application
+      run: npm run build
+    
+    - name: Test build
+      run: npm run preview &
+      
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT || 22 }}
+        script: |
+          echo "Starting automated deployment..."
+          
+          # Navigate to project directory
+          cd /var/www/BisnovaFrontend
+          
+          # Create backup of current deployment
+          sudo cp -r dist dist-backup-$(date +%Y%m%d-%H%M%S) 2>/dev/null || true
+          
+          # Pull latest changes
+          git fetch origin
+          git reset --hard origin/main
+          
+          # Install/update dependencies
+          npm ci --only=production
+          
+          # Build the application
+          npm run build
+          
+          # Set proper permissions
+          sudo chown -R www-data:www-data dist/
+          sudo chmod -R 755 dist/
+          
+          # Test nginx configuration
+          sudo nginx -t
+          
+          # Reload nginx if config is valid
+          if [ $? -eq 0 ]; then
+            sudo systemctl reload nginx
+            echo "✅ Deployment completed successfully!"
+            echo "🌐 Site updated at: $(date)"
+          else
+            echo "❌ Nginx configuration error! Rolling back..."
+            # Restore backup if available
+            if [ -d "dist-backup-$(date +%Y%m%d)-"* ]; then
+              sudo rm -rf dist
+              sudo mv dist-backup-$(date +%Y%m%d)-* dist
+              sudo systemctl reload nginx
+            fi
+            exit 1
+          fi
+          
+          # Clean up old backups (keep last 5)
+          sudo find . -name "dist-backup-*" -type d | sort -r | tail -n +6 | xargs sudo rm -rf 2>/dev/null || true
+          
+          echo "🚀 Deployment automation completed!"

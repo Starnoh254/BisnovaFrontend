@@ -286,6 +286,88 @@ npm run build
 sudo systemctl reload nginx
 ```
 
+## Automated Deployment with GitHub Actions
+
+For automatic deployments when you push to GitHub, follow these steps:
+
+### 1. Setup VPS for Automation
+
+Run the VPS setup script on your server:
+
+```bash
+# On your VPS, navigate to project directory
+cd /var/www/BisnovaFrontend
+
+# Make setup script executable and run it
+chmod +x vps-setup.sh
+./vps-setup.sh
+```
+
+This script will:
+- Generate SSH keys for GitHub Actions
+- Set up proper permissions
+- Create deployment scripts
+- Configure webhook listener (optional)
+
+### 2. Configure GitHub Secrets
+
+In your GitHub repository, go to Settings > Secrets and variables > Actions, and add these secrets:
+
+```
+VPS_HOST: your-server-ip-or-domain
+VPS_USERNAME: your-vps-username  
+VPS_SSH_KEY: your-private-ssh-key-content
+VPS_PORT: 22 (or your custom SSH port)
+```
+
+### 3. GitHub Actions Workflow
+
+The `.github/workflows/deploy.yml` file is already configured to:
+- Run tests and build validation on every push/PR
+- Deploy to VPS only on pushes to main branch
+- Create automatic backups before deployment
+- Rollback on deployment failures
+- Set proper file permissions
+
+### 4. Deployment Process
+
+Now when you push to the main branch:
+
+```bash
+git add .
+git commit -m "Your changes"
+git push origin main
+```
+
+The following will happen automatically:
+1. GitHub Actions runs tests and builds
+2. If tests pass, connects to your VPS via SSH
+3. Creates backup of current deployment
+4. Pulls latest code and rebuilds
+5. Updates nginx and verifies deployment
+6. Rolls back if anything fails
+
+### 5. Monitor Deployments
+
+- Check GitHub Actions tab for deployment status
+- View deployment logs in real-time
+- Get notified of deployment success/failure
+
+### Alternative: Webhook Method
+
+For more advanced webhook handling, you can also use the webhook listener:
+
+```bash
+# Start the webhook service
+sudo systemctl start bisnova-webhook
+sudo systemctl enable bisnova-webhook
+
+# Check status
+sudo systemctl status bisnova-webhook
+```
+
+Then configure GitHub webhook to point to: `http://your-server:3001/webhook`
+
 ## Performance Optimization
 
 1. **Enable Nginx Caching:**
