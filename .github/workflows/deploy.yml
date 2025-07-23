@@ -86,13 +86,13 @@ jobs:
           
           # Install/update dependencies
           if command -v npm >/dev/null 2>&1; then
-            npm ci --only=production
+            npm ci
           else
             echo "❌ NPM not found. Trying alternative methods..."
             # Try with full path if found
             if [ -n "$NPM_PATH" ]; then
               echo "Using NPM from: $NPM_PATH"
-              $NPM_PATH ci --only=production
+              $NPM_PATH ci
             else
               echo "❌ Cannot find NPM. Please ensure Node.js is properly installed."
               exit 1
@@ -108,6 +108,16 @@ jobs:
             else
               echo "❌ Cannot build application - NPM not available"
               exit 1
+            fi
+          fi
+          
+          # Clean up dev dependencies after build (optional - saves space)
+          echo "Cleaning up dev dependencies..."
+          if command -v npm >/dev/null 2>&1; then
+            npm prune --omit=dev
+          else
+            if [ -n "$NPM_PATH" ]; then
+              $NPM_PATH prune --omit=dev
             fi
           fi
           
