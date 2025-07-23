@@ -59,6 +59,13 @@ jobs:
           git fetch origin
           git reset --hard origin/main
           
+          # Fix permissions before build (important!)
+          echo "Fixing permissions for build process..."
+          if [ -d "dist" ]; then
+            sudo chown -R $(whoami):$(whoami) dist/
+            sudo chmod -R 755 dist/
+          fi
+          
           # Setup Node.js environment - try multiple common paths
           export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
           
@@ -100,6 +107,12 @@ jobs:
           fi
           
           # Build the application
+          echo "Building application..."
+          # Ensure clean build environment
+          if [ -d "dist" ]; then
+            rm -rf dist
+          fi
+          
           if command -v npm >/dev/null 2>&1; then
             npm run build
           else
