@@ -118,8 +118,8 @@ const Footer = () => {
             <div className="space-y-2 text-gray-300">
               <p>📍 123 Business District</p>
               <p className="ml-4">Industrial Area, Nairobi</p>
-              <p>📞 +254 700 123 456</p>
-              <p>✉️ info@bisnovasupplies.com</p>
+              <p>📞 +254 726 064 120</p>
+              <p>✉️ bisnovasupplieslimited@gmail.com</p>
             </div>
           </div>
         </div>

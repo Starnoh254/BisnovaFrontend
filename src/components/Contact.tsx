@@ -82,8 +82,7 @@ const Contact = () => {
                 <div className="ml-4">
                   <h4 className="text-lg font-semibold text-gray-900">Phone</h4>
                   <p className="text-gray-600">
-                    +254 700 123 456<br />
-                    +254 720 987 654
+                    +254 726 064 120<br />
                   </p>
                 </div>
               </div>
@@ -97,8 +96,8 @@ const Contact = () => {
                 <div className="ml-4">
                   <h4 className="text-lg font-semibold text-gray-900">Email</h4>
                   <p className="text-gray-600">
-                    info@bisnovasupplies.com<br />
-                    sales@bisnovasupplies.com
+                    bisnovasupplieslimited@gmail.com<br />
+                    
                   </p>
                 </div>
               </div>

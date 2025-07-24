@@ -1,13 +1,22 @@
 const Hero = () => {
   return (
-    <section id="home" className="bg-gradient-to-r from-bisnova-blue-600 to-bisnova-blue-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section
+      id="home"
+      className="bg-gradient-to-r from-bisnova-blue-600 to-bisnova-blue-800 text-white relative overflow-hidden"
+    >
+      {/* Background Logo Watermark */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5">
+        <img src="/bisnova.jpeg" alt="" className="w-96 h-96 object-contain" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Welcome to <span className="text-bisnova-green-400">Bisnova Supplies</span>
+            Welcome to{' '}
+            <span className="text-bisnova-green-400">Bisnova Supplies</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Your trusted partner for quality supplies and exceptional service. 
+            Your trusted partner for quality supplies and exceptional service.
             We deliver excellence in every product and solution we provide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -26,7 +35,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <svg

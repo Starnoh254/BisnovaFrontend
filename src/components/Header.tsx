@@ -9,26 +9,56 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-bisnova-blue-600">
-              Bisnova <span className="text-bisnova-green-600">Supplies</span> Limited
+            <div className="flex items-center space-x-3">
+              {/* Logo Image */}
+              <div className="bg-bisnova-dark rounded-lg p-2 shadow-sm">
+                <img
+                  src="/bisnova.jpeg"
+                  alt="Bisnova Supplies Limited Logo"
+                  className="h-10 w-auto object-contain"
+                />
+              </div>
+              {/* Company Name */}
+              <div className="hidden sm:block">
+                <div className="text-xl font-bold text-bisnova-blue-500">
+                  Bisnova{' '}
+                  <span className="text-bisnova-green-500">Supplies</span>
+                </div>
+                <div className="text-xs text-gray-500 font-medium">Limited</div>
+              </div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium">
+            <a
+              href="#home"
+              className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium"
+            >
               Home
             </a>
-            <a href="#about" className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium">
+            <a
+              href="#about"
+              className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium"
+            >
               About
             </a>
-            <a href="#services" className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium">
+            <a
+              href="#services"
+              className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium"
+            >
               Services
             </a>
-            <a href="#products" className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium">
+            <a
+              href="#products"
+              className="text-gray-700 hover:text-bisnova-blue-600 transition-colors font-medium"
+            >
               Products
             </a>
-            <a href="#contact" className="bg-bisnova-green-600 text-white px-4 py-2 rounded-lg hover:bg-bisnova-green-700 transition-colors font-medium">
+            <a
+              href="#contact"
+              className="bg-bisnova-green-600 text-white px-4 py-2 rounded-lg hover:bg-bisnova-green-700 transition-colors font-medium"
+            >
               Contact
             </a>
           </nav>
