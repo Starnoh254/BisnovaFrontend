@@ -158,7 +158,7 @@ const Footer = () => {
             <p className="mb-2">
               Website designed and created by{' '}
               <a
-                href="https://starnoh.vercel.app/"
+                href="https://www.starnohdev.com/"
                 className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
