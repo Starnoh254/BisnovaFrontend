@@ -167,7 +167,7 @@ const Footer = () => {
               </a>
             </p>
             <p className="text-xs text-gray-400">
-              Professional web development services |{' '}
+              Professional web development & SEO services |{' '}
               <a
                 href="tel:+254714296170"
                 className="text-blue-400 hover:text-blue-300 transition-colors"

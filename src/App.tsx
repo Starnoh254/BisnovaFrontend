@@ -6,6 +6,7 @@ import Services from './components/Services'
 import Products from './components/Products'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import SEOMarketingModal from './components/SEOMarketingModal'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Products />
       <Contact />
       <Footer />
+      <SEOMarketingModal />
     </div>
   )
 }
