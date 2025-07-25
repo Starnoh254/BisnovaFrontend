@@ -4,12 +4,11 @@ const Services = () => {
       icon: '🌾',
       title: 'Cereals & Grains Supply',
       description:
-        'High-quality cereals and grains for wholesale distribution, retail, and food processing industries.',
+        'Delivering premium-quality cereals and grains for wholesale distributors, retailers, and food processing companies across Kenya. Our products are carefully sourced to ensure freshness, quality, and competitive pricing.',
       features: [
-        'Rice Varieties',
-        'Maize & Corn',
-        'Wheat Products',
-        'Specialty Grains',
+        'Premium Rice Varieties (long-grain, basmati, pishori, etc.)',
+        'Maize & Corn Products (whole maize, maize flour, animal feed)',
+        'Dried Beans (green grams, red kidney beans, black beans, and more)',
       ],
     },
     {
