@@ -16,8 +16,9 @@ const Hero = () => {
             <span className="text-bisnova-green-400">Bisnova Supplies</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Your trusted partner for quality supplies and exceptional service.
-            We deliver excellence in every product and solution we provide.
+            Your trusted supplier of quality cereals, medical equipment, and
+            stationery supplies. We deliver excellence in every product and
+            service across Kenya.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
